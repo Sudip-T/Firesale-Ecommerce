@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+<!-- <div class="mb-top-slider">
+    <div class="mb-ts-img">
+        <a href="#"><img src="{% static 'images/slide-2.png' %}" alt=""
+                style="height: 256px;width: 100%;object-fit: cover;"></a>
+    </div>
+</div> -->
+<div class="mb-product-items mt-5">
+    <div class="mb-product-row">
+        {% for product in object_list %}
+        <div class="mb-productcol">
+            <div class="mb-product-wrap">
+                <div class="mb-product-img">
+                    <a href="{{ product.get_absolute_url }}"><img src="{{product.image.url}}" alt=""
+                            class="thumbnail"></a>
+                </div>
+                <div class="mb-product-details">
+                    <h5 style="margin-top: 15px;margin-bottom: 0">{{product.name}}</h5>
+                    <h5 style="margin-top: 15px;margin-bottom: 0">{{product.get_category_display}}</h5>
+                    <div class="mb-pl-price" style="display: flex;justify-content: space-between;">
+                        <span>Rs. {{product.price|floatformat:0}}</span> 
+                        <span class="addto"><a href="">Add to Cart</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
+
